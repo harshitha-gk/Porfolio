@@ -282,7 +282,7 @@ nav ul li a:hover::after{
     width: fit-content;
     padding: 14px 50px;
     border-radius: 6px;
-    margin-left: 50px;
+    /* margin-left: 50px; */
 }
 
 .contact-right form{
