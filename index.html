@@ -5,9 +5,18 @@
         <title>harshitha GK</title>
         <link rel="styleSheet" href="style.css">
         <script src="https://kit.fontawesome.com/71879da3c4.js" crossorigin="anonymous"></script>
-        <script src= 
+        <!-- <script src= 
     "https://smtpjs.com/v3/smtp.js"> 
-  </script> 
+  </script>  -->
+
+<script type="text/javascript"
+src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+(function(){
+emailjs.init("y-P4JfFmEPXPmgkr8");
+})();
+</script>
         </head>
         <body>
 <div id="header">
@@ -45,7 +54,7 @@
     </div>
     
 </div>
-<div id="about">
+<div id="about" >
     <div class="container">
         <div class="row">
             <div class="about-col-1">
@@ -58,7 +67,7 @@
                     About Me
                 </h1>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit vero, exercitationem adipisci itaque eius inventore iste. Nisi illum maxime quos numquam assumenda, sunt natus nihil, quo, ducimus nulla cupiditate adipisci!
+                    Full Stack Developer with 2 years of experience in designing and implementing robust web applications. Proficient in both front-end and back-end development, with a strong track record of delivering high-quality, scalable solutions. Skilled in creating responsive user interfaces, optimizing database performance, and ensuring seamless functionality. Committed to staying current with emerging technologies and industry best practices. Eager to contribute technical expertise to a dynamic team, driving innovation and delivering exceptional user experiences.
                 </p>
                 <div class="tab-titles">
                     <p class="tab-link active-link" onclick="openTab('skills')">Skills</p>
@@ -80,22 +89,55 @@
                             Material ui
                         </li>
                         <li>
-                            node js mysql 
+                            node js 
+                        </li>
+                        <li>
+                            sql
+                        </li>
+                        <li>
+                            kafka
+                        </li>
+                        <li>
+                            Graphql
+                        </li>
+                        <li>
+                            Rest APIs
                         </li>
                     </ul>
                 </div>
-                <div class="tab-contents" id="experience">
+                <div class="tab-contents" id="experience" >
+                   <h3> Professional Experience:</h3>
+                          
+                          <br><h4>Zeliot</h4> <br>
+Dec 2021 - Present
+
+
+
                     <ul>
                         <li>
-                            1 <br>sjdhkjshhk
+                            Developed and maintained web applications using Node.js and React.js.<br>sjdhkjshhk
                         </li>
                         <li>
-                            Node js<br>sjdhkjshhk
+                            Collaborated with cross-functional teams to design and implement user-friendly features.
                         </li>
-                        <li>
-                            mysql <br>sjdhkjshhk
-                        </li>
+                        
                     </ul>
+
+
+                    <h3 style="margin-top: 20px;">Internship Experience:</h3><br>
+
+                    <h4>PVH Groups</h4><br>
+May 2020 - August 2020
+<ul>
+    <li>
+        Assisted in the development of a customer portal, gaining proficiency in front-end technologies.
+    </li>
+    <li>
+        Participated in code reviews and learned best practices for software development.
+    </li>
+    
+</ul>
+
                 </div>
                 <div class="tab-contents" id="education">
                     <ul>
@@ -182,7 +224,7 @@
             <div class="contact-left">
                 <h1 class="sub-title">Contact Me</h1>
                 <p>
-                    <i class="fa-solid fa-paper-plane"></i>harshithagkgk@gmail.com
+                   <a href="mailto:harshithagkgk@gamil.com"><i class="fa-solid fa-paper-plane"></i>harshithagkgk@gmail.com</a> 
                 </p>
                 <p>
                     <i class="fa-solid fa-phone"></i> 7975999017
@@ -201,14 +243,14 @@
     <i class="fa-brands fa-linkedin"></i>
 </a>
                 </div>
-                <a href="" class="btn" download>Download CV</a>
+                <a href="./images/Harshitha_G_K_Resume (2).pdf" target="_blank" class="btn" download>Download CV</a>
             </div>
             <div class="contact-right">
                 <form>
-                    <input type="text" name="Name" placeholder="Your Name" required>
-                    <input type="text" name="email" placeholder="Your Email" required>
-                    <textarea name="message"  rows="6" placeholder="Your Message"></textarea>
-                    <button type="submit" class="btn">SUBMIT</button>
+                    <input type="text" id="name"  placeholder="Your Name" required>
+                    <input type="email" id="email"   placeholder="Your Email" required>
+                    <textarea name="message" id="message" rows="6" placeholder="Your Message"></textarea>
+                    <button  class="btn" id="sub" type="submit" >SUBMIT</button>
                 </form>
             </div>
         </div>
@@ -232,6 +274,42 @@ console.log(event.currentTarget,"event.currentTarget")
 event.currentTarget.classList.add("active-link")
 document.getElementById(tabName).classList.add("active-tab")
     }
+
+    document.getElementById("sub").addEventListener("click", function(event) {
+    event.preventDefault(); 
+
+    sendEmail();
+});
+
+async function sendEmail() {
+    try {
+        let param = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value
+        }
+
+        console.log(param, "param")
+
+        const service_id = "service_zqi9s86";
+        const template_id = "template_zbkb7i9";
+        emailjs.send(service_id, template_id, param).then((res) => {
+                document.getElementById('name').value = ""
+                document.getElementById('email').value = ""
+                document.getElementById('message').value = ""
+                console.log("sent msg")
+                alert("your message sent successfully ")
+            }).catch(err => {
+                console.log(err)
+            });
+    } catch (err) {
+        console.log(err, "err")
+    }
+}
+
+
+
+    
 </script>
         </body>
     </head>
